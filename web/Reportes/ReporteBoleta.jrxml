@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="434b9824-6285-4a4e-9bb1-110fca4e41a7">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idboleta" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     boleta.`idboleta` AS boleta_idboleta,
+     boleta.`boleta` AS boleta_boleta,
+     boleta.`tipoboleta` AS boleta_tipoboleta,
+     boleta.`estadoboleta` AS boleta_estadoboleta,
+     boleta.`total` AS boleta_total,
+     boleta.`formapago` AS boleta_formapago,
+     boleta.`numdocumento` AS boleta_numdocumento,
+     boleta.`banco` AS boleta_banco,
+     boleta.`fecha` AS boleta_fecha,
+     boleta.`monto` AS boleta_monto
+FROM
+     `boleta` boleta
+WHERE boleta.`idboleta`=$P{idboleta}]]>
+	</queryString>
+	<field name="boleta_idboleta" class="java.lang.Integer"/>
+	<field name="boleta_boleta" class="java.lang.String"/>
+	<field name="boleta_tipoboleta" class="java.lang.String"/>
+	<field name="boleta_estadoboleta" class="java.lang.String"/>
+	<field name="boleta_total" class="java.lang.Double"/>
+	<field name="boleta_formapago" class="java.lang.String"/>
+	<field name="boleta_numdocumento" class="java.lang.Integer"/>
+	<field name="boleta_banco" class="java.lang.String"/>
+	<field name="boleta_fecha" class="java.sql.Date"/>
+	<field name="boleta_monto" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="133" splitType="Stretch">
+			<staticText>
+				<reportElement x="22" y="13" width="123" height="20" forecolor="#0000CC" uuid="f9c512e3-a397-49b9-9d16-445b3a104aae"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Boletas Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="13" width="116" height="20" forecolor="#009999" uuid="eaaff1cf-b088-41c7-b6e9-d6a3ca4d0138"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Documento]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="419" y="49" width="116" height="20" forecolor="#009999" uuid="91e5dcaf-b7d2-4540-8c75-32ba5e42271a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Documento]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="557" y="13" width="100" height="20" uuid="5be27f67-7c7d-4db7-8508-50ad4d51a064"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="557" y="49" width="100" height="20" uuid="b7a7e105-2b75-4ce7-ba0c-bda90a51f07c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_numdocumento}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="22" y="49" width="282" height="73" uuid="9e83ac5f-90b5-4d84-9bda-7cb15b810ef1"/>
+				<imageExpression><![CDATA["Image.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="167" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="11" y="0" width="669" height="140" forecolor="#0066CC" backcolor="#FFFFFF" uuid="9e527bf6-9b24-4eb9-8af4-4bbf8d549923"/>
+			</rectangle>
+			<textField>
+				<reportElement x="135" y="21" width="88" height="20" uuid="1a27f87a-1f04-494b-a400-4a2801947b48"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_boleta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="21" width="75" height="20" uuid="02cb85f9-ae5a-4a85-a2dd-5408558ed856"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_tipoboleta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="535" y="21" width="74" height="20" uuid="6bc771a2-01f8-4c81-a2b4-f378378e45b5"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_estadoboleta}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="135" y="98" width="78" height="20" uuid="228f5fda-44ad-4b77-be86-fa3f6bfe93e7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_total}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="21" width="100" height="20" forecolor="#666666" uuid="d6f328ad-e6bb-4f3b-b072-a4ed4ca101cd"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Número Boleta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="21" width="85" height="20" forecolor="#666666" uuid="0b20a7be-cb15-49cf-a35f-81787535b63f"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Tipo Boleta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="21" width="94" height="20" forecolor="#666666" uuid="5a67558e-8102-4340-bcbd-8d4758cb8390"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Estado Boleta:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="98" width="58" height="20" forecolor="#666666" uuid="b7da1d17-902c-4245-ad91-d2fc255b946c"/>
+				<textElement>
+					<font size="12" isBold="true" isItalic="false" isUnderline="false" isStrikeThrough="false"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="61" width="100" height="20" forecolor="#666666" uuid="49d7bd99-5def-4ccb-b18f-eca5b6941c9a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="242" y="61" width="100" height="20" forecolor="#666666" uuid="d978399d-2f4d-45f9-a836-261d2f1071fd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="441" y="61" width="83" height="20" forecolor="#666666" uuid="6f09b5c8-ce3d-4ecd-960d-01453fcd7481"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="135" y="61" width="100" height="20" uuid="c377d7a4-1bfa-4be8-817b-f7a1ad6d242c"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_monto}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="344" y="61" width="100" height="20" uuid="782fe3a0-8895-4a59-8ec3-1d1eed28bb0d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_formapago}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="535" y="61" width="100" height="20" uuid="5f93cdc3-c7a6-477b-9edf-87f88065e721"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{boleta_banco}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="35" splitType="Stretch"/>
+	</columnHeader>
+</jasperReport>

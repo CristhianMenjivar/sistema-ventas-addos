@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df01c87b-5b99-45bb-add6-b8c3abe17ff6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idcliente" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     clientes.`numfactura` AS clientes_numfactura,
+     clientes.`tipofactura` AS clientes_tipofactura,
+     clientes.`estadofactura` AS clientes_estadofactura,
+     clientes.`total` AS clientes_total,
+     clientes.`formapago` AS clientes_formapago,
+     clientes.`numdocumento` AS clientes_numdocumento,
+     clientes.`banco` AS clientes_banco,
+     clientes.`fecha` AS clientes_fecha,
+     clientes.`monto` AS clientes_monto,
+     clientes.`rut` AS clientes_rut,
+     clientes.`idcliente` AS clientes_idcliente
+FROM
+     `clientes` clientes
+WHERE clientes.`idcliente`=$P{idcliente}]]>
+	</queryString>
+	<field name="clientes_numfactura" class="java.lang.String"/>
+	<field name="clientes_tipofactura" class="java.lang.String"/>
+	<field name="clientes_estadofactura" class="java.lang.String"/>
+	<field name="clientes_total" class="java.lang.Double"/>
+	<field name="clientes_formapago" class="java.lang.String"/>
+	<field name="clientes_numdocumento" class="java.lang.Integer"/>
+	<field name="clientes_banco" class="java.lang.String"/>
+	<field name="clientes_fecha" class="java.sql.Date"/>
+	<field name="clientes_monto" class="java.lang.Double"/>
+	<field name="clientes_rut" class="java.lang.String"/>
+	<field name="clientes_idcliente" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="18" width="122" height="20" forecolor="#0000CC" uuid="b2bbcddb-4669-4cec-b765-2c07c9d8c094"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Facturas Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="18" width="110" height="20" forecolor="#009999" backcolor="#FFFFFF" uuid="1aecd5aa-daa3-4375-b929-1b0cb6bfe75d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Documento]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="516" y="18" width="100" height="20" uuid="e68c118b-c4b1-442b-9707-dbb604f9697a"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_fecha}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="388" y="48" width="118" height="20" forecolor="#009999" uuid="9d3b4ef0-9e76-4ad4-912c-16119907f771"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Documento]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="48" width="100" height="20" uuid="8226d2b5-e180-4f4d-a6fc-1593724a1a79"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_numdocumento}]]></textFieldExpression>
+			</textField>
+			<image>
+				<reportElement x="27" y="48" width="294" height="81" uuid="829461d2-b6c8-4577-8b3c-4dc443d9671d"/>
+				<imageExpression><![CDATA["Image.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="161" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="11" y="0" width="708" height="161" forecolor="#0066CC" uuid="18399759-b55d-4254-a600-13fc46fdce98"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="14" width="77" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="771da11d-f98c-4dd9-bd30-b0589cdbecec"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut Clientes:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="56" width="100" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="1a3eae0d-fbbc-493c-89a6-badebd938aa3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="131" y="14" width="100" height="20" uuid="cddb6a9f-0244-4e80-915b-77247364fcc7"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_rut}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="131" y="56" width="85" height="20" uuid="5adfee42-99b3-410e-acf3-3a9d74911a28"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_numfactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="56" width="77" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="67bf394d-6126-4ab2-b826-fc4434b1f6c1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="321" y="56" width="79" height="20" uuid="cec8873e-0018-4d29-aeb9-383f8f042013"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_tipofactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="411" y="56" width="100" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="42b9a255-2a05-4194-aca6-85f28902b5ff"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Factura:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="516" y="56" width="127" height="20" uuid="ee05365d-b759-4f89-b16f-8369c9809912"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_estadofactura}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="97" width="55" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="89fbb48a-e3b4-482d-9617-154526d95b02"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Monto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="130" y="97" width="86" height="20" uuid="e3ebf94a-8d30-482b-bd94-60e598474d27"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_monto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="227" y="97" width="101" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="72b302ef-e3c3-4d6d-97c9-619df5b897d4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Forma de Pago:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="339" y="97" width="61" height="20" uuid="395a9eef-da1c-48fc-8900-149918969ae7"/>
+				<textElement>
+					<font size="12"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_formapago}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="411" y="97" width="72" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="e11d12fa-4d4c-4326-8565-2f56bb522cc2"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Banco:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="498" y="97" width="100" height="20" uuid="a54c4006-ff64-47ba-8d2e-012db4c10401"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_banco}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="27" y="131" width="77" height="20" forecolor="#666666" uuid="fa294d9c-482e-408b-ba31-817981ee2354"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="131" y="131" width="89" height="20" uuid="c2790e5b-b497-40c8-a5af-dc1873f3cae3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{clientes_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="147" splitType="Stretch"/>
+	</columnHeader>
+</jasperReport>

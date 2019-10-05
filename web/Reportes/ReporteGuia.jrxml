@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="df01c87b-5b99-45bb-add6-b8c3abe17ff6">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idguia" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT
+     guia.`idguia` AS guia_idguia,
+     guia.`rutguia` AS guia_rutguia,
+     guia.`numguia` AS guia_numguia,
+     guia.`tipoguia` AS guia_tipoguia,
+     guia.`estadoguia` AS guia_estadoguia,
+     guia.`total` AS guia_total
+FROM
+     `guia` guia
+WHERE guia.`idguia`= $P{idguia}]]>
+	</queryString>
+	<field name="guia_idguia" class="java.lang.Integer"/>
+	<field name="guia_rutguia" class="java.lang.String"/>
+	<field name="guia_numguia" class="java.lang.String"/>
+	<field name="guia_tipoguia" class="java.lang.String"/>
+	<field name="guia_estadoguia" class="java.lang.String"/>
+	<field name="guia_total" class="java.lang.Double"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="140" splitType="Stretch">
+			<staticText>
+				<reportElement x="27" y="18" width="122" height="20" forecolor="#0000CC" uuid="b2bbcddb-4669-4cec-b765-2c07c9d8c094"/>
+				<textElement>
+					<font size="14"/>
+				</textElement>
+				<text><![CDATA[Guías Clientes]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="388" y="18" width="110" height="20" forecolor="#009999" backcolor="#FFFFFF" uuid="1aecd5aa-daa3-4375-b929-1b0cb6bfe75d"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Documento]]></text>
+			</staticText>
+			<image>
+				<reportElement x="27" y="48" width="294" height="81" uuid="829461d2-b6c8-4577-8b3c-4dc443d9671d"/>
+				<imageExpression><![CDATA["Image.jpg"]]></imageExpression>
+			</image>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="511" y="18" width="100" height="20" uuid="ce37fc44-7294-439d-b9e7-ef2eacaf5a4f"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="161" splitType="Stretch">
+			<rectangle radius="10">
+				<reportElement x="11" y="0" width="708" height="161" forecolor="#0066CC" uuid="18399759-b55d-4254-a600-13fc46fdce98"/>
+			</rectangle>
+			<staticText>
+				<reportElement x="27" y="14" width="77" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="771da11d-f98c-4dd9-bd30-b0589cdbecec"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rut Cliente:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="56" width="87" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="1a3eae0d-fbbc-493c-89a6-badebd938aa3"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Número Guía:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="216" y="56" width="61" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="67bf394d-6126-4ab2-b826-fc4434b1f6c1"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo Guía:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="375" y="56" width="78" height="20" forecolor="#666666" backcolor="#FFFFFF" uuid="42b9a255-2a05-4194-aca6-85f28902b5ff"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Estado Guía:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="27" y="93" width="77" height="20" forecolor="#666666" uuid="fa294d9c-482e-408b-ba31-817981ee2354"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Total:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="127" y="14" width="100" height="20" uuid="4727a5a4-781e-4336-883f-960fd4db39ba"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guia_rutguia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="56" width="78" height="20" uuid="8c632c83-872a-4b7c-b566-04abdf00febd"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guia_numguia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="291" y="56" width="84" height="20" uuid="6fa6d8ac-6258-47ab-be69-8ee4387cc9d4"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guia_tipoguia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="468" y="56" width="94" height="20" uuid="2ed4298f-8b09-473f-a873-7bd8f7264116"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guia_estadoguia}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="127" y="93" width="100" height="20" uuid="3697c286-a41b-4847-bf32-4185bdd08e8b"/>
+				<textElement>
+					<font size="12" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{guia_total}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="147" splitType="Stretch"/>
+	</columnHeader>
+</jasperReport>
