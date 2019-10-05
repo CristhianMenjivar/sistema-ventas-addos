@@ -248,12 +248,13 @@ public class VentasController extends HttpServlet {
             //verificamos si la orden se creo
             if (ordenCreada != null) {
                 request.getSession().setAttribute("ordenCreada", ordenCreada);
-                response.sendRedirect("/sistema-ventas/ventas?accion=verPedido");
+                response.sendRedirect("/ventas?accion=verPedido");
             }
 
         } else {
             request.getSession().setAttribute("mensaje", "EL monto está vacio...");
-            response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
+            // local: response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
+            response.sendRedirect("/ventas?accion=hacerPedido");
         }
     }
 

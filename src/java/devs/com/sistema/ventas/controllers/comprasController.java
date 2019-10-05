@@ -236,7 +236,8 @@ public class comprasController extends HttpServlet {
             request.getSession().setAttribute("mensaje", "No hay productos agregados");
         }
 
-        response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
+        // local es asi: response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
+        response.sendRedirect("/compras?accion=compras");
     }
 
     private void verDetalle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
