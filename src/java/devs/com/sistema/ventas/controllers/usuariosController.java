@@ -19,6 +19,18 @@ import org.apache.commons.codec.digest.DigestUtils;
 
 @WebServlet(name = "usuariosController", urlPatterns = {"/Usuarios"})
 public class usuariosController extends HttpServlet {
+    
+    /* variable global, cuando el sistema está en desarrollo en nuestra maquina local se usa a base de glassfish
+       para redireccion "/sistema ventas" necesaria para glassfish en Local
+     * En heroku u otro hosting se usa la raiz de la app para redirigir "/"
+    */
+    
+    // sistema en desarrollo
+    private String SISTEMA_DEVELOPERS = "/sistema-ventas";
+    //sistema en producción
+    private String SISTEMA_PRODUCCTION = "";
+    //direccion de la raiz del sistema
+    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
@@ -95,12 +107,13 @@ public class usuariosController extends HttpServlet {
         }
 
         request.getSession().setAttribute("mensaje", mensaje);
-        response.sendRedirect(request.getContextPath() + "/resultadosAccion.jsp");
+        response.sendRedirect(this.PATH_SISTEMA + "/resultadosAccion.jsp");
     }
 
     private void cerrarSesion(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        request.getSession().setAttribute("error", "Sesión cerrada con éxito!");
         request.getSession().removeAttribute("user");
-        response.sendRedirect(request.getContextPath() + "/index.jsp");
+        response.sendRedirect(this.PATH_SISTEMA + "/index.jsp");
     }
 
     private void crearUsuario(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
@@ -139,7 +152,7 @@ public class usuariosController extends HttpServlet {
             response.sendRedirect("productos");
 
         } catch (Exception e) {
-            response.sendRedirect("registro.jsp");
+            response.sendRedirect( this.PATH_SISTEMA + "/registro.jsp");
         }
 
     }
@@ -155,7 +168,7 @@ public class usuariosController extends HttpServlet {
 
             if (usuarioSesion != null) {
                 request.getSession().setAttribute("user", usuarioSesion);
-                response.sendRedirect(request.getContextPath() + "/productos");
+                response.sendRedirect( this.PATH_SISTEMA + "/productos");
             } else {
                 throw new ServletException(new ErrorLoginException("No existe ningun usuario con estas credenciales."));
             }

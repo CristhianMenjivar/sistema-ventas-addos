@@ -42,7 +42,6 @@
 
     <body id="page-top">
 
-        <jsp:useBean class="devs.com.sistema.ventas.modelos.Compra" id="compraCreada" scope="session"></jsp:useBean>
             <!-- se incluye la barra de navigacion de heading -->
         <jsp:include page="../layouts/header.jsp"></jsp:include>
 
@@ -55,16 +54,14 @@
 
                     <div class="container-fluid">
 
-                    <%-- mensaje de la orden creada--%>
-                    <% if (compraCreada.getCompraId() != 0) {%>
+                    <%--vamos a usar un alert de boostrap para el mensaje--%>
+                    <% if (!mensaje.isEmpty()) {%>
                     <div class="alert alert-success alert-dismissible">
                         <button type="button" class="close" data-dismiss="alert">×</button>
-                        <strong>Informe:</strong> Se ha creado la compra con folio ${compraCreada.getOrdenId()}
-                        <hr>
-                        <a href="compras?accion=verDetalle&idcompra=${compra.compraId}" class="btn btn-outline-success"><span class="fas fa-fw fa-list"></span> Ver detalles</a>
+                        <strong>Informe:</strong> <%= mensaje%>
                     </div>
-                    <% request.getSession().removeAttribute("compraCreada");
-                        request.getSession().removeAttribute("compra");%>
+                    <% request.getSession().removeAttribute("mensaje");
+                       request.getSession().removeAttribute("mensaje");%>
                     <% }%>
 
                     <!-- DataTables Example -->

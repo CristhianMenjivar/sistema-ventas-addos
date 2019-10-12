@@ -3,10 +3,24 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/usuario/Desktop/Sistema%20ventas%20henrry/sistema-ventas/src/java/devs/com/sistema/ventas/coneccion/BaseDatosMYSQL.java</file>
-            <file>file:/C:/Users/usuario/Desktop/Sistema%20ventas%20henrry/sistema-ventas/src/java/devs/com/sistema/ventas/controllers/comprasController.java</file>
-            <file>file:/C:/Users/usuario/Desktop/Sistema%20ventas%20henrry/sistema-ventas/src/java/devs/com/sistema/ventas/controllers/VentasController.java</file>
-            <file>file:/C:/Users/usuario/Desktop/Sistema%20ventas%20henrry/sistema-ventas/web/WEB-INF/compras/new.jsp</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/marcaController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/CuentasController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/categoriaController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/ConfiguraciónSistema.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/clienteControlador.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/creditoController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/usuariosController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/VentasController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/notificacionController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/filtro/FiltroAutentificacion.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/guiaControlador.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/boletaController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/gastoController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/empleadosControlador.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/comprasController.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/web/index.jsp</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/proveedoresControlador.java</file>
+            <file>file:/C:/Users/usuario/Desktop/clon%20sistema%20ventas/sistema-ventas-addos/src/java/devs/com/sistema/ventas/controllers/productosController.java</file>
         </group>
     </open-files>
 </project-private>

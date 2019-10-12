@@ -25,6 +25,20 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "VentasController", urlPatterns = {"/ventas"})
 public class VentasController extends HttpServlet {
+    
+    /* variable global, cuando el sistema está en desarrollo en nuestra maquina local se usa a base de glassfish
+       para redireccion "/sistema ventas" necesaria para glassfish en Local
+     * En heroku u otro hosting se usa la raiz de la app para redirigir "/"
+    */
+    
+    
+    // sistema en desarrollo
+    private String SISTEMA_DEVELOPERS = "/sistema-ventas";
+    //sistema en producción
+    private String SISTEMA_PRODUCCTION = "";
+    //direccion de la raiz del sistema
+    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
+    
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -55,7 +69,9 @@ public class VentasController extends HttpServlet {
                     break;
             }
         } else {
-            request.getRequestDispatcher("/sistema-ventas/").forward(request, response);
+            
+            // el path debe estar sugun el ambiente de trabajo: 
+            request.getRequestDispatcher( this.PATH_SISTEMA + "/").forward(request, response);
         }
 
     }
@@ -222,12 +238,15 @@ public class VentasController extends HttpServlet {
             request.getSession().setAttribute("operacionProducto", "EL producto " + idprod + " "
                     + "se agrego corréctamente a la venta.");
             request.getSession().setAttribute("venta", "venta"); // para validar en productos que es una venta
-            response.sendRedirect("/sistema-ventas/productos");
+            
+            //local: 
+            response.sendRedirect( this.PATH_SISTEMA +"/productos");
 
         } else {
 
             request.getSession().setAttribute("mensaje", mensaje);
-            response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
+            
+            response.sendRedirect( this.PATH_SISTEMA + "/ventas?accion=hacerPedido");
         }
     }
 
@@ -248,13 +267,14 @@ public class VentasController extends HttpServlet {
             //verificamos si la orden se creo
             if (ordenCreada != null) {
                 request.getSession().setAttribute("ordenCreada", ordenCreada);
-                response.sendRedirect("/ventas?accion=verPedido");
+                
+                //local o heroku
+                response.sendRedirect( this.PATH_SISTEMA + "/ventas?accion=verPedido");
             }
 
         } else {
             request.getSession().setAttribute("mensaje", "EL monto está vacio...");
-            // local: response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
-            response.sendRedirect("/ventas?accion=hacerPedido");
+            local: response.sendRedirect( this.PATH_SISTEMA + "/ventas?accion=hacerPedido");
         }
     }
 
@@ -300,14 +320,14 @@ public class VentasController extends HttpServlet {
         }
 
         request.getSession().setAttribute("orden", orden);
-        response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
+        response.sendRedirect(this.PATH_SISTEMA + "/ventas?accion=hacerPedido");
     }
 
     private void cancelarVenta(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         request.getSession().setAttribute("mensaje", "La venta ha sido cancelada");
         request.getSession().removeAttribute("orden");
-        response.sendRedirect(request.getContextPath() + "/ventas?accion=hacerPedido");
+        response.sendRedirect(this.PATH_SISTEMA + "/ventas?accion=hacerPedido");
     }
 
 

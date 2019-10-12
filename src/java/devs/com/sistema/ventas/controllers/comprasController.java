@@ -25,6 +25,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "comprasController", urlPatterns = {"/compras"})
 public class comprasController extends HttpServlet {
+    
+    /* variable global, cuando el sistema está en desarrollo en nuestra maquina local se usa a base de glassfish
+       para redireccion "/sistema ventas" necesaria para glassfish en Local
+     * En heroku u otro hosting se usa la raiz de la app para redirigir "/"
+    */
+    
+    // sistema en desarrollo
+    private String SISTEMA_DEVELOPERS = "/sistema-ventas";
+    //sistema en producción
+    private String SISTEMA_PRODUCCTION = "";
+    //direccion de la raiz del sistema
+    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -170,7 +182,7 @@ public class comprasController extends HttpServlet {
         }
 
         request.getSession().setAttribute("mensaje", mensaje);
-        response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
+        response.sendRedirect( this.PATH_SISTEMA + "/compras?accion=compras");
 
     }
 
@@ -201,13 +213,13 @@ public class comprasController extends HttpServlet {
         }
 
         request.getSession().setAttribute("compra", compra);
-        response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
+        response.sendRedirect(this.PATH_SISTEMA + "/compras?accion=compras");
     }
 
     private void cancelarCompra(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.getSession().removeAttribute("compra");
         request.getSession().setAttribute("mensaje", "La compra ha sido cancelada");
-        response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
+        response.sendRedirect( this.PATH_SISTEMA + "/compras?accion=compras");
     }
 
     private void terminarCompra(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -222,10 +234,10 @@ public class comprasController extends HttpServlet {
             compraJBDC DAOcompra = new compraJBDC();
 
             String mensaje = "";
-            //mensaje = DAOProd.cargarInventario(compra);
-
-            if (DAOcompra.insert(compra).getCompraId() > 0) {
+            
+            if (DAOcompra.insert(compra) != null) {
                 mensaje = "Los productos han sido cargados al inventario";
+                request.getSession().removeAttribute("compra");
             } else {
                 mensaje = "No se pudo cargar el inventario";
             }
@@ -236,8 +248,8 @@ public class comprasController extends HttpServlet {
             request.getSession().setAttribute("mensaje", "No hay productos agregados");
         }
 
-        // local es asi: response.sendRedirect(request.getContextPath() + "/compras?accion=compras");
-        response.sendRedirect("/compras?accion=compras");
+        //local es asi: 
+        response.sendRedirect( this.PATH_SISTEMA + "/compras");
     }
 
     private void verDetalle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

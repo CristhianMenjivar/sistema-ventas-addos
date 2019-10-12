@@ -10,7 +10,6 @@ import devs.com.sistema.ventas.modelos.Proveedor;
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,6 +25,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "proveedoresControlador", urlPatterns = {"/proveedores"})
 public class proveedoresControlador extends HttpServlet {
+    
+    /* variable global, cuando el sistema está en desarrollo en nuestra maquina local se usa a base de glassfish
+       para redireccion "/sistema ventas" necesaria para glassfish en Local
+     * En heroku u otro hosting se usa la raiz de la app para redirigir "/"
+    */
+    
+    // sistema en desarrollo
+    private String SISTEMA_DEVELOPERS = "/sistema-ventas";
+    //sistema en producción
+    private String SISTEMA_PRODUCCTION = "";
+    //direccion de la raiz del sistema
+    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
@@ -150,7 +161,7 @@ public class proveedoresControlador extends HttpServlet {
         //redirigimos al index con todo y mensaje
         //con sendRedirect para que los datos insertados no se sigan reeviando
         request.getSession().setAttribute("operacionProveedor", mensaje); // lo enviamos por la secion
-        response.sendRedirect("/sistema-ventas/proveedores");
+        response.sendRedirect( this.PATH_SISTEMA + "/proveedores");
     }
 
     private void borrarProveedor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -159,7 +170,7 @@ public class proveedoresControlador extends HttpServlet {
         String mensaje =base.delete(idProv);
         
         request.getSession().setAttribute("operacionProveedor", mensaje); // lo enviamos por la secion
-        response.sendRedirect("/sistema-ventas/proveedores");
+        response.sendRedirect( this.PATH_SISTEMA + "/proveedores");
     }
 
     private void actualizarProveedor(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
@@ -193,7 +204,7 @@ public class proveedoresControlador extends HttpServlet {
         //redirigimos al index con todo y mensaje
         //con sendRedirect para que los datos insertados no se sigan reeviando
         request.getSession().setAttribute("operacionProveedor", mensaje); // lo enviamos por la secion
-        response.sendRedirect("/sistema-ventas/proveedores");
+        response.sendRedirect( this.PATH_SISTEMA + "/proveedores");
     }
 
 }

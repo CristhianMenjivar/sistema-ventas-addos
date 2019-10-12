@@ -21,6 +21,18 @@ import javax.servlet.http.HttpServletResponse;
  */
 @WebServlet(name = "empleadosControlador", urlPatterns = {"/empleados"})
 public class empleadosControlador extends HttpServlet {
+    
+    /* variable global, cuando el sistema está en desarrollo en nuestra maquina local se usa a base de glassfish
+       para redireccion "/sistema ventas" necesaria para glassfish en Local
+     * En heroku u otro hosting se usa la raiz de la app para redirigir "/"
+    */
+    
+    // sistema en desarrollo
+    private String SISTEMA_DEVELOPERS = "/sistema-ventas";
+    //sistema en producción
+    private String SISTEMA_PRODUCCTION = "";
+    //direccion de la raiz del sistema
+    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
 
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -151,7 +163,7 @@ public class empleadosControlador extends HttpServlet {
             //redirigimos al index con todo y mensaje
             //con sendRedirect para que los datos insertados no se sigan reeviando
             request.getSession().setAttribute("opEmp", mensaje); // lo enviamos por la secion
-            response.sendRedirect("/sistema-ventas/empleados");
+            response.sendRedirect( this.PATH_SISTEMA + "/empleados");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
@@ -168,7 +180,7 @@ public class empleadosControlador extends HttpServlet {
             //redirigimos al index con todo y mensaje
             //con sendRedirect para que los datos insertados no se sigan reeviando
             request.getSession().setAttribute("opEmp", mensaje); // lo enviamos por la secion
-            response.sendRedirect("/sistema-ventas/empleados");
+            response.sendRedirect( this.PATH_SISTEMA + "/empleados");
        
     }
 
@@ -190,7 +202,7 @@ public class empleadosControlador extends HttpServlet {
             //redirigimos al index con todo y mensaje
             //con sendRedirect para que los datos insertados no se sigan reeviando
             request.getSession().setAttribute("opEmp", mensaje); // lo enviamos por la secion
-            response.sendRedirect("/sistema-ventas/empleados");
+            response.sendRedirect( this.PATH_SISTEMA + "/empleados");
         } catch (Exception ex) {
             ex.printStackTrace();
         }
