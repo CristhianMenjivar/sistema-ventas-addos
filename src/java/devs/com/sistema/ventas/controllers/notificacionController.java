@@ -34,7 +34,7 @@ public class notificacionController extends HttpServlet {
     //sistema en producción
     private String SISTEMA_PRODUCCTION = "";
     //direccion de la raiz del sistema
-    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
+    private String PATH_SISTEMA = SISTEMA_DEVELOPERS;
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

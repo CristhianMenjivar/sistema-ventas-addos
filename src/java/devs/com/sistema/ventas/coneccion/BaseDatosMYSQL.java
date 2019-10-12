@@ -21,14 +21,14 @@ public class BaseDatosMYSQL {
     public BaseDatosMYSQL() {
 
         //url para el jdbc
-        //String urlDataBase = "jdbc:mysql://localhost:3306/bd_sistema_addon";  //Mysql
-        String urlDataBase = "jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_e340c3b8b3902f9?reconnect=true";  //Heroku
+        String urlDataBase = "jdbc:mysql://localhost:3306/bd_sistema_addon";  //Mysql
+        //String urlDataBase = "jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_e340c3b8b3902f9?reconnect=true";  //Heroku
 
         try {
             //cargando el driver de mysql
             Class.forName("com.mysql.jdbc.Driver");
-            //conn = DriverManager.getConnection(urlDataBase, "cristian", "1234");
-            conn = DriverManager.getConnection(urlDataBase, "ba94ed262dbbf7", "480881c9");  //heroku
+            conn = DriverManager.getConnection(urlDataBase, "cristian", "1234");
+            //conn = DriverManager.getConnection(urlDataBase, "ba94ed262dbbf7", "480881c9");  //heroku
 
         } catch (Exception ex) {
             System.out.println("Excepción: " + ex.getMessage());

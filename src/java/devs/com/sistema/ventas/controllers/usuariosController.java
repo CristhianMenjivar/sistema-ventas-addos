@@ -30,7 +30,7 @@ public class usuariosController extends HttpServlet {
     //sistema en producción
     private String SISTEMA_PRODUCCTION = "";
     //direccion de la raiz del sistema
-    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
+    private String PATH_SISTEMA = SISTEMA_DEVELOPERS;
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)

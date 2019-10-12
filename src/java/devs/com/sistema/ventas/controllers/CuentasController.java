@@ -31,7 +31,7 @@ public class CuentasController extends HttpServlet {
     //sistema en producción
     private String SISTEMA_PRODUCCTION = "";
     //direccion de la raiz del sistema
-    private String PATH_SISTEMA = SISTEMA_PRODUCCTION;
+    private String PATH_SISTEMA = SISTEMA_DEVELOPERS;
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
