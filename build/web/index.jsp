@@ -68,7 +68,7 @@
                 <label for="password">contraseña:</label>
               </div>
             </div>
-             <input type="submit" class="btn btn-primary btn-block" value="Entrar">
+              <button type="submit" class="btn btn-primary btn-block">Entrar</button>
           </form>
 
 
